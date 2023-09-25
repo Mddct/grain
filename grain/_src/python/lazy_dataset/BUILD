@@ -44,22 +44,25 @@ py_test(
 )
 
 py_library(
-    name = "grain_pool_v2",
-    srcs = ["grain_pool_v2.py"],
+    name = "lazy_dataset_grain_pool",
+    srcs = ["lazy_dataset_grain_pool.py"],
     srcs_version = "PY3",
     deps = [
+        ":lazy_dataset",
         "//grain/_src/core:parallel",
-        "//grain/_src/python:multiprocessing_common",
+        "//grain/_src/python:options",
+        "//grain/_src/python/lazy_dataset/transformations:slice",
+        "//learning/deepmind/science/pipe/python:ram_file",
+        "//learning/deepmind/science/pipe/python:ram_pickle",
     ],
 )
 
 py_test(
-    name = "grain_pool_v2_test",
-    srcs = ["grain_pool_v2_test.py"],
+    name = "lazy_dataset_grain_pool_test",
+    srcs = ["lazy_dataset_grain_pool_test.py"],
     srcs_version = "PY3",
     deps = [
-        ":grain_pool_v2",
-        "//grain/_src/core:sharding",
-        "//grain/_src/python:samplers",
+        ":lazy_dataset",
+        ":lazy_dataset_grain_pool",
     ],
 )
