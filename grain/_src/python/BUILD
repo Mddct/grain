@@ -125,7 +125,6 @@ py_library(
     deps = [
         ":data_sources",
         ":grain_pool",
-        ":multiprocessing_common",
         ":operations",
         ":options",
         ":record",
@@ -153,8 +152,10 @@ py_test(
     deps = [
         ":data_loader",
         ":data_sources",
+        ":grain_pool",
         ":operations",
         ":samplers",
+        ":shared_memory_array",
         "//grain/_src/core:sharding",
         "//grain/_src/core:transforms",
     ],
@@ -168,6 +169,7 @@ py_library(
         ":grain_logging",
         ":multiprocessing_common",
         ":options",
+        ":shared_memory_array",
         "//grain/_src/core:parallel",
     ],
 )
